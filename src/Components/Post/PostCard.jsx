@@ -20,6 +20,10 @@ export const PostCard = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const handleOpenCommentModal = () => {
+    onOpen();
+  };
+
   const handlePostLike = () => {
     setIsPostLike(!isPostLike);
   };
@@ -30,10 +34,6 @@ export const PostCard = () => {
 
   const handleSavePost = () => {
     setIsSaved(!isSaved);
-  };
-
-  const handleOpencommentModel = () => {
-    onOpen();
   };
 
   return (
@@ -89,7 +89,7 @@ export const PostCard = () => {
             )}
 
             <FaRegComment
-              onClick={handleOpencommentModel}
+              onClick={handleOpenCommentModal}
               className="text-xl hover:opacity-50 cursor-pointer"
             />
 
@@ -128,14 +128,7 @@ export const PostCard = () => {
         </div>
       </div>
 
-      <CommentModel
-        handlePostLike={handlePostLike}
-        onClose={onClose}
-        isOpen={isOpen}
-        handleSavePost={handleSavePost}
-        isPostLike={isPostLike}
-        isSaved={isSaved}
-      />
+      <CommentModel handlePostLike />
     </div>
   );
 };
